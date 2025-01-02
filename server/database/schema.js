@@ -27,7 +27,7 @@ const memberSchema = new Schema(
     telegramId: { type: String }, // Member's unique Telegram ID
     subscriptionStatus: {
       type: String,
-      enum: ["active", "inactive", "expired"],
+      enum: ["active", "inactive", "expired", "cancelled"],
       default: "inactive",
     }, // Current status of the subscription
 
@@ -36,6 +36,7 @@ const memberSchema = new Schema(
     subscriptionStart: { type: Date }, // Start date of their subscription
     subscriptionExpiry: { type: Date }, // Expiry date of the subscription
     paid: { type: Boolean, default: false }, // Has the member paid?
+    groupAccessGranted: { type: Boolean, default: false }, // Has the member been granted access to the group?
   },
   { timestamps: true }
 );
