@@ -9,7 +9,6 @@ import telegramRoutes from "./routes/telegramRoutes.js";
 
 dotenv.config();
 
-
 const dbUrl = process.env.DB_URL;
 
 connectDB(dbUrl);
@@ -18,9 +17,11 @@ app.use(express.json());
 app.use(bodyParser.json());
 const port = process.env.PORT || 4000;
 
-
-
 app.use(telegramRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
 app.listen(port, () => {
   console.log(`server is running on ${port}`);
